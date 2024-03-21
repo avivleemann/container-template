@@ -27,8 +27,8 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER .devcontainer/env.yml  /tmp/env.yml
 RUN ENV_NAME=$(grep 'name:' $ENVYML | awk '{print $2}') && \
     echo "Environment Name: $ENV_NAME"
 
-RUN micromamba create -f /tmp/env.yml && \
-    micromamba clean --all --yes && \
+RUN micromamba install -yn base -f /tmp/env.yml && \
+    micromamba clean -qafy && \
     chmod -R 777 /opt/conda
 # Activate the conda environment for the Dockerfile.
 # <https://github.com/mamba-org/micromamba-docker#running-commands-in-dockerfile-within-the-conda-environment>
