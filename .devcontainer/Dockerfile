@@ -3,7 +3,7 @@ FROM mambaorg/micromamba:1.5.6
 ARG MAMBA_USER=$user
 USER root
 # The folder to use as a workspace. The project should be mounted here.
-ARG DEV_WORK_DIR=/workspace
+# ARG DEV_WORK_DIR=/workspace
 
 COPY .devcontainer/scripts/common-debian-patched.sh /tmp/
 RUN bash /tmp/common-debian-patched.sh true $MAMBA_USER && rm /tmp/common-debian-patched.sh
@@ -13,10 +13,10 @@ COPY .devcontainer/features/install.sh /tmp/install.sh
 RUN DOCKERDASHCOMPOSEVERSION=v2 bash /tmp/install.sh && rm /tmp/install.sh
 
 # Make sure everyone can access the working directory.
-ARG DEV_WORK_DIR
-RUN : \
-    && mkdir --parents --mode=777 "${DEV_WORK_DIR}" \
-    && chown "$MAMBA_USER:$MAMBA_USER" "${DEV_WORK_DIR}"
+# ARG DEV_WORK_DIR
+# RUN : \
+#     && mkdir --parents --mode=777 "${DEV_WORK_DIR}" \
+#     && chown "$MAMBA_USER:$MAMBA_USER" "${DEV_WORK_DIR}"
 
 USER $MAMBA_USER
 
