@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/miniconda
 {
-	"name": "micromamba scRNAseqPy",
+	"name": "micromamba base",
 	"build": { 
 		"context": "..",
 		"dockerfile": "Dockerfile"
@@ -23,7 +23,7 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"python.defaultInterpreterPath": "/opt/conda/envs/scRNAseqPy"
+				"python.defaultInterpreterPath": "/opt/conda/envs/base"
 			},
 			"extensions": [
 				"ms-python.python",
